@@ -24,3 +24,7 @@ LOAD: --along with the path to the file--, loads a saved state of the program
 
 def parseCommand() -> None:
     pass
+
+
+def executeCommand() -> None:
+    pass
