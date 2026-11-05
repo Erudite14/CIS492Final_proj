@@ -1,30 +1,27 @@
-"""
-BOND: displays a bisectrcted list of government bonds and commercial bons
-CASH:
-STOCKS:
-COMMODITIES:
-STATE: displays
+"""Parse and execute user commands for the terminal prototype."""
+
+import display
 
 
-
-RESET:
-SAVE:
-LOAD: --along with the path to the file--, loads a saved state of the program
-
-
-
-
-
-
+def parseCommand(command: str) -> bool:
+    """Process a command; return False when the user wants to exit."""
+    cmd = command.strip().upper()
+    if cmd in ("EXIT", "QUIT"):
+        print("Goodbye!")
+        return False
+    executeCommand(cmd)
+    return True
 
 
-
-"""
-
-
-def parseCommand() -> None:
-    pass
-
-
-def executeCommand() -> None:
-    pass
+def executeCommand(cmd: str) -> None:
+    """Run the requested terminal feature, or explain what is still planned."""
+    if cmd == "HELP":
+        print("Commands: HELP, STOCKS, BOND, CASH, COMMODITIES, STATE, EXIT")
+    elif cmd == "STOCKS":
+        display.displayInfo()
+    elif cmd in ("BOND", "CASH", "COMMODITIES", "STATE"):
+        print(f"{cmd} is planned but is not implemented in this prototype.")
+    elif cmd == "":
+        return
+    else:
+        print("Unknown command. Type HELP to see available commands.")

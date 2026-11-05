@@ -1,11 +1,20 @@
-from . import command
+"""Entry point for the PY-Bloomberg Terminal prototype."""
+
+import command
 
 
-print("Welcome to the PY-Bloomberg Terminal !")
-active = True
-while active == True:
-    cmd = input("PY-B Ter: ")
-    command.parseCommand(cmd)
-    if cmd == "exit":
-        active = False
-    print(f"Hello {name}")
+def main() -> None:
+    print("Welcome to the PY-Bloomberg Terminal prototype!")
+    print("Type HELP for commands or EXIT to quit.")
+    active = True
+    while active:
+        try:
+            cmd = input("PY-B Ter: ")
+        except (EOFError, KeyboardInterrupt):
+            print("\nGoodbye!")
+            break
+        active = command.parseCommand(cmd)
+
+
+if __name__ == "__main__":
+    main()

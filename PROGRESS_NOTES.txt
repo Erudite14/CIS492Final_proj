@@ -1,0 +1,17 @@
+CIS 492 — Early prototype update (November 5, 2026)
+
+What this version adds:
+- Runs using: python terminal.py
+- HELP lists recognized commands.
+- STOCKS requests recent daily closing data for the S&P 500, Dow Jones, and Nasdaq Composite through yfinance, then displays their latest two available closes and the calculated change.
+- StockIndex class groups data and implements a from-scratch point/percent change calculation.
+- Unknown commands and EXIT are handled.
+
+Market-data note: The stock-index values are retrieved from Yahoo Finance via the yfinance Python library; they are not invented sample values. yfinance is an unofficial interface to Yahoo Finance data, not a direct exchange connection or a guarantee of real-time quotes. This prototype requests up to five days of daily history and displays the two most recent available daily closes, so values may be delayed or unavailable if Yahoo Finance, the network, or the library is unavailable. The values shown are index levels, not individual stock prices.
+BOND, CASH, COMMODITIES, STATE, RESET, SAVE, LOAD and historical-range features remain unfinished.
+
+Potential next development steps for the team:
+- Document and verify the yfinance dependency and data-source limitations.
+- Add clearer handling and user messaging for unavailable market data.
+- Add historical intervals and persistence, then test against known values.
+- Coordinate who develops bond, cash, and commodities commands.
