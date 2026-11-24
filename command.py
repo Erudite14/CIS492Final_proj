@@ -19,13 +19,9 @@ def executeCommand(cmd: str) -> None:
         print("Commands: HELP, STOCKS, BOND, CASH, COMMODITIES, STATE, EXIT")
     elif cmd == "STOCKS":
         display.displayInfo()
-<<<<<<< HEAD
-    elif cmd in ("BOND", "CASH", "COMMODITIES", "STATE"):
-=======
     elif cmd == 'BOND':
         pass
     elif cmd in ("CASH", "COMMODITIES", "STATE"):
->>>>>>> b55f796 (added Bond section)
         print(f"{cmd} is planned but is not implemented in this prototype.")
     elif cmd == "":
         return

@@ -1,10 +1,7 @@
 import yfinance as yf
-<<<<<<< HEAD
-=======
 from datetime import datetime, timedelta
 import pandas as pd
 import requests
->>>>>>> b55f796 (added Bond section)
 
 
 def get_stock_data(symbol: str):
@@ -20,9 +17,6 @@ def get_stock_data(symbol: str):
     current = float(history["Close"].iloc[-1])
     previous = float(history["Close"].iloc[-2])
 
-<<<<<<< HEAD
-    return current, previous
-=======
     return current, previous
 
 def get_gov_bond_data():
@@ -107,4 +101,3 @@ def get_gov_bond_data():
 
     print(summary_df.to_string(index=False))
     return summary_df
->>>>>>> b55f796 (added Bond section)
