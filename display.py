@@ -3,7 +3,11 @@
 Stock-index values are fetched from Yahoo Finance via yfinance; they are
 recent daily closes, not guaranteed real-time quotes.
 """
+<<<<<<< HEAD
 from market_data import get_stock_data
+=======
+from market_data import get_stock_data, get_gov_bond_data
+>>>>>>> b55f796 (added Bond section)
 
 
 class StockIndex:
@@ -49,7 +53,15 @@ def buildStockDict() -> dict[str, StockIndex]:
 
 
 def buildBondDict() -> dict:
+<<<<<<< HEAD
     # Planned for a later development stage.
+=======
+    indexes = {
+            "Bills": ("^GSPC", "S&P 500"),
+            "Bonds": ("^DJI", "Dow Jones"),
+            "Notes": ("^IXIC", "Nasdaq Composite")
+        }
+>>>>>>> b55f796 (added Bond section)
     return {}
 
 
