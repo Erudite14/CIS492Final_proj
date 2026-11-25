@@ -101,3 +101,45 @@ def get_gov_bond_data():
 
     print(summary_df.to_string(index=False))
     return summary_df
+
+
+
+def get_money_data() -> dict:
+    summary_dict = {}
+
+
+    def get_dxy_closing_prices() -> list:
+        # Fetch the US Dollar Index (DXY) ticker
+        dxy = yf.Ticker("DX-Y.NYB")
+
+        # Retrieve historical market data for the past 30 calendar days
+        # Use period="30d" for calendar days, or period="2mo" and .tail(30) for 30 trading days
+        hist = dxy.history(period="30d")
+
+        # Extract the 'Close' column, round to 2 decimal places, and convert to a Python list
+        closing_prices = [round(price, 2) for price in hist["Close"].tolist()]
+
+        return closing_prices
+
+
+
+    def get_rate_to_usd(target_currency):
+        target = target_currency.upper()
+        url = f"https://frankfurter.app{target}"
+        
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        
+        return data["rates"][target]
+
+    summary_dict.update({"USD": get_rate_to_usd("USD")})
+    summary_dict.update({"JPY": get_rate_to_usd("JPY")})
+    summary_dict.update({"GBP": get_rate_to_usd("GBP")})
+    summary_dict.update({"CAD": get_rate_to_usd("CAD")})
+    summary_dict.update({"SEK": get_rate_to_usd("SEK")})
+    summary_dict.update({"CHF": get_rate_to_usd("CHF")})
+    summary_dict.update({"list": get_dxy_closing_prices()})
+
+    return summary_dict
+    

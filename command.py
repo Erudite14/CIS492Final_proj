@@ -20,8 +20,10 @@ def executeCommand(cmd: str) -> None:
     elif cmd == "STOCKS":
         display.displayInfo()
     elif cmd == 'BOND':
-        pass
-    elif cmd in ("CASH", "COMMODITIES", "STATE"):
+        display.displayBondInfo()
+    elif cmd == 'CASH':
+        display.displayMoneyInfo()
+    elif cmd in ("COMMODITIES", "STATE"):
         print(f"{cmd} is planned but is not implemented in this prototype.")
     elif cmd == "":
         return

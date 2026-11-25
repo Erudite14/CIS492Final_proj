@@ -3,7 +3,8 @@
 Stock-index values are fetched from Yahoo Finance via yfinance; they are
 recent daily closes, not guaranteed real-time quotes.
 """
-from market_data import get_stock_data, get_gov_bond_data
+import matplotlib.pyplot as plt
+from market_data import get_stock_data, get_gov_bond_data, get_money_data
 
 
 class StockIndex:
@@ -48,16 +49,30 @@ def buildStockDict() -> dict[str, StockIndex]:
     return results
 
 
-def buildBondDict() -> dict:
+def displayBondInfo() -> None:
+    bond_data = get_gov_bond_data()
     indexes = {
             "Bills": ("^GSPC", "S&P 500"),
             "Bonds": ("^DJI", "Dow Jones"),
             "Notes": ("^IXIC", "Nasdaq Composite")
-        }
+        }#----
     return {}
 
 
-def buildMoneyDict() -> dict:
+def displayMoneyInfo() -> dict:
+    money_data = get_money_data()
+    print(f"Dollar (USD): {money_data.get('USD')}")
+    print(f"Japanese yen (JPY): {money_data.get('JPY')}")
+    print(f"Pound sterling (GBP): {money_data.get('GBP')}")
+    print(f"Canadian dollar (CAD): {money_data.get('CAD')}")
+    print(f"Swedish krona (SEK): {money_data.get('SEK')}")
+    print(f"Swiss franc (CHF): {money_data.get('CHF')}")
+
+    plt.plot(x=range(len(money_data.get('list'))), y=money_data.get('list'))
+    plt.xlabel("Days (last 30 calendar days)")
+    plt.ylabel("DXY Closing Price")
+
+    plt.show()
     return {}
 
 
